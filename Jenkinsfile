@@ -19,8 +19,9 @@ pipeline {
                     ls -la
                 '''
             }
-
-            stage('test-stage')
+           
+        }
+         stage('test-stage')
             {
                 steps{
                     sh '''
@@ -29,6 +30,6 @@ pipeline {
                     '''
                 }
             }
-        }
+
     }
 }
