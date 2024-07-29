@@ -86,7 +86,7 @@ pipeline {
             }
 
             environment {
-                CI_ENVIRONMENT_URL = 'STAGING_URL_TO_BE_SET'
+                CI_ENVIRONMENT_URL = '8c7227a5-ac67-4f85-b06e-5163ecd4757a'
             }
 
             steps {
@@ -107,24 +107,27 @@ pipeline {
             }
         }
 
-        stage('Deploy to AWS') {
+        stage('Deploy prod') {
             agent {
                 docker {
-                    image 'amazon/aws-cli'
+                    image 'my-playwright'
                     reuseNode true
-                    args "--entrypoint=''"
                 }
             }
+
             environment {
-                AWS_S3_BUCKET = 'learning-jenkins-app-oct99 '
+                CI_ENVIRONMENT_URL = '1dc5b29b-6fc7-49a8-9fd5-43c2f11ba79b'
             }
+            
             steps {
-                withCredentials([usernamePassword(credentialsId: 'my-aws', passwordVariable: 'AWS_SECRET_ACCESS_KEY', usernameVariable: 'AWS_ACCESS_KEY_ID')]) {
-                    sh '''
-                        aws --version
-                        aws s3 sync build s3://$AWS_S3_BUCKET
-                    '''
-                }
+                sh '''
+                    node --version
+                    netlify --version
+                    echo "Deploying to production. Site ID: $NETLIFY_SITE_ID"
+                    netlify status
+                    netlify deploy --dir=build --prod
+                    npx playwright test  --reporter=html
+                '''
             }
 
             post {
