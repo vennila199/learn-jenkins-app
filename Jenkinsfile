@@ -86,7 +86,7 @@ pipeline {
             }
 
             environment {
-                CI_ENVIRONMENT_URL = 'STAGING_URL_TO_BE_SET'
+                CI_ENVIRONMENT_URL = '1dc5b29b-6fc7-49a8-9fd5-43c2f11ba79b'
             }
 
             steps {
