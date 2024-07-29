@@ -86,7 +86,7 @@ pipeline {
             }
 
             environment {
-                CI_ENVIRONMENT_URL = '1dc5b29b-6fc7-49a8-9fd5-43c2f11ba79b'
+                CI_ENVIRONMENT_URL = '8c7227a5-ac67-4f85-b06e-5163ecd4757a'
             }
 
             steps {
@@ -116,7 +116,7 @@ pipeline {
             }
 
             environment {
-                CI_ENVIRONMENT_URL = 'YOUR NETLIFY SITE URL'
+                CI_ENVIRONMENT_URL = '1dc5b29b-6fc7-49a8-9fd5-43c2f11ba79b'
             }
             
             steps {
